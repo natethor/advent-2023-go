@@ -1,14 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func Prompt(label string) string {
+	var str string
+	r := bufio.NewReader(os.Stdin)
+	for {
+		fmt.Fprint(os.Stderr, label+" ")
+		str, _ = r.ReadString('\n')
+		if str != "" {
+			break
+		}
+	}
+	return strings.TrimSpace(str)
+}
 
 func main() {
-	d1p1_total := Day1Part1()
-	fmt.Println("Day1Part1 Total:", d1p1_total)
-	d1p2_total := Day1Part2()
-	fmt.Println("Day1Part2 Total:", d1p2_total)
-	d2p1_total := Day2Part1()
-	fmt.Println("Day2Part1 Total:", d2p1_total)
-	d2p2_total := Day2Part2()
-	fmt.Println("Day2Part2 Total:", d2p2_total)
+	whichDay := Prompt("Which day? (1, 2, or 3): ")
+	fmt.Printf("Running day %s\n", whichDay)
+	switch whichDay {
+	case "1":
+		fmt.Println("Day1Part1: ", Day1Part1())
+		fmt.Println("Day1Part2: ", Day1Part2())
+	case "2":
+		fmt.Println("Day2Part1: ", Day2Part1())
+		fmt.Println("Day2Part2: ", Day2Part2())
+	case "3":
+		fmt.Println("Day3Part1: ", Day3Part1())
+		fmt.Println("Day3Part2: ", Day3Part2())
+	default:
+		fmt.Println("Invalid day")
+	}
 }
