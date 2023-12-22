@@ -21,7 +21,7 @@ func Prompt(label string) string {
 }
 
 func main() {
-	whichDay := Prompt("Which day? (1, 2, or 3): ")
+	whichDay := Prompt("Which day? (1, 2, 3, or 4): ")
 	fmt.Printf("Running day %s\n", whichDay)
 	switch whichDay {
 	case "1":
@@ -33,6 +33,8 @@ func main() {
 	case "3":
 		fmt.Println("Day3Part1: ", Day3Part1())
 		fmt.Println("Day3Part2: ", Day3Part2())
+	case "4":
+		fmt.Println("Day4Part1: ", Day4Part1())
 	default:
 		fmt.Println("Invalid day")
 	}
